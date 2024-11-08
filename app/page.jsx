@@ -1,16 +1,16 @@
 'use client'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react';
+import isViewed from './villagers/page'
 
 
 export default function Home() {
   const router = useRouter()
-  let [isViewed, setIsViewed] = useState(-1)
+  
   return (
     <div>
       <h1>Stardew Valley Character Cards</h1>
       <button type="button" onClick={()=>
-          router.push('/villagers') + setIsViewed(1)}>
+          router.push('/villagers')}>
           Check out all the characters!
       </button>
       {isViewed ?
@@ -20,7 +20,9 @@ export default function Home() {
           <button type='button' onClick={()=>router.push('/flashcards')}>
               Test your knowledge!
           </button>
-        </p>:""}
+        </p> : 
+        <p></p>
+      }
     </div>
   );
 }
