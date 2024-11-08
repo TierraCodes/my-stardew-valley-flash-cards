@@ -1,29 +1,24 @@
 'use client'
 import { useRouter } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { PrismaClient } from '@prisma/client';
 
-
-export default function Character(){
+export default async function Character(){
     const router = useRouter()
-    
-    let [villagers, setVillager] = useState([])
-    let [isViewed, setIsViewed] = useState(false)
+    const prisma = new PrismaClient()
 
-    useEffect(() =>{
-        fetch("villagers.json")
-          .then(response => response.json())
-          .then(data => {
-            setVillager(data.villagers)
-          })
-    }, []);
+    let villagers = await prisma.villager.findMany()
 
-    let characterList = villagers.map((character)=>
-        <li key={character.id}>{character.name}</li>
-    );
-    
+    const villagerList = villagers.map((villager)=>
+        <li>
+            {villager.name}
+        </li>
+    )
+
     return(
         <div>
-            <ul>{characterList}</ul>
+            <ul>
+                {villagerList}
+            </ul>
             <button type="button" onClick={()=> router.push('/') + setIsViewed(true)}>
                 Back to Learning
             </button>
