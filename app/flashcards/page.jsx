@@ -24,7 +24,7 @@ export default function Flashcard(){
     }
 
 
-    let villagerCard = selectedVillager.get((villager)=>
+    let villagerCard = selectedVillager.findUnique((villager)=>
         <div className="flashcard" key={villager.id} 
             onClick={getRandomCharacter()}>
             {villager.name}
