@@ -12,4 +12,6 @@ model Villager {
   name      String
   birthday       String
   relationshipStatus     String
+  pic       String
+  question  String
 }

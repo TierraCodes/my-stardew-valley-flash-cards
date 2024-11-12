@@ -22,7 +22,7 @@ body {
   margin: 20px;
   display: flex;
   justify-content: center;
-  align-content: center;
+  align-items: center;
 }
 h1{
   font-size: x-large;
@@ -35,10 +35,39 @@ button{
   font-weight: bold;
 }
 .flashcard{
-  width: 200px;
-  height: 200px;
   background-color: palevioletred;
   font-size: larger;
   margin: auto;
-  padding-top: 30px;
+  padding: 5px;
+  border: 2px solid black;
+  width: 270px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.villager-list{
+  background-color: palevioletred;
+  font-size: larger;
+  margin: 20px;
+  padding: 10px;
+  border: 2px solid black;
+}
+#villager-list{
+  display: flex;
+  flex-wrap: wrap;
+}
+#villager-header{
+  display: flex;
+  justify-content: space-between;
+}
+img{
+  width: 200px;
+  border: 2px solid black;
+}
+#flashcards-page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

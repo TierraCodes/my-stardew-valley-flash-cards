@@ -1,40 +1,17 @@
-'use client'
-import { useState,useEffect } from "react";
+'use server'
+import { PrismaClient } from '@prisma/client';
+import Flashcards from "./flashcards";
 
-export default function Flashcard(){
-    
-    let [villagers, setVillager] = useState([])
-    
-    useEffect(() =>{
-        fetch("villagers.json")
-          .then(response => response.json())
-          .then(data => {
-            setVillager(data.villagers)
-          })
-    }, []);
+export default async function Flashcard(){
+    const prisma = new PrismaClient()
 
-    let [selectedVillager, setSelectedVillager]=useState(-1)
+    let villagers = await prisma.villager.findMany()
 
-    const getRandomCharacter = () =>{
-        const keys = Object.keys(villagers)
-        const index = keys[Math.floor(Math.random()*keys.length)]
-        console.log(villagers[index])
-        setSelectedVillager(villagers[index])
-    }
-
-
-    let villagerCard = selectedVillager.findUnique((villager)=>
-        <div className="flashcard" key={villager.id} 
-            onClick={getRandomCharacter()}>
-            {villager.name}
+    return(
+        <div>
+            <Flashcards villagers={villagers}></Flashcards>
         </div>
-    );
-
-    return (
-        <div id="flexbox">
-            <h1>How well were you paying attention?</h1>
-            {villagerCard}
-        </div>
-    );
+    )
+    
 }
 
