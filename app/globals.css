@@ -68,6 +68,19 @@ img{
 }
 #flashcards-page{
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+#difficulty-buttons{
+  margin-top: 40px;
+}
+#easy-button{
+  background-color: rgb(42, 227, 42);
+}
+#medium-button{
+  background-color: yellow;
+}
+#hard-button{
+  background-color: rgb(255, 54, 54);
 }
