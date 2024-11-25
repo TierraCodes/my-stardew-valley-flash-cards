@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
 
-export default function villagerList(props){
+export default function VillagerList(props){
     const router = useRouter()
 
     let [villagerInfo, setVillagerInfo] = useState(-1)
@@ -15,7 +15,7 @@ export default function villagerList(props){
                 <span id='percentage-learned'>{villager.mastery}%</span>
             </div>
             <div>
-                <Image src={villager.pic}/>
+                <img src={villager.pic}/>
             </div>
             <span style = {{display: villagerInfo == villager.id ? "block" : "none"}}>
                 <div>

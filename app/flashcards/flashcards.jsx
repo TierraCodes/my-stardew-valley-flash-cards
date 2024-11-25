@@ -51,7 +51,7 @@ export default function Flashcards(props){
         <div className="flashcard" key={currentVillager.id} 
             onClick={()=> showAnswer()}>
             {currentVillager.name}
-            <Image src={currentVillager.pic} alt="Official image of villager" />
+            <img src={currentVillager.pic} alt="Official image of villager" />
             {currentVillager.question}
         </div>
 
