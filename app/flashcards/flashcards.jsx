@@ -1,22 +1,26 @@
 'use client'
 import { useState } from "react";
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Flashcards(props){
+    const router = useRouter()
+
     let [percentUnderstood, setPercentUnderstood] = useState(1)
 
     const updatePercentUnderstood = (button) =>{
         let percent = 1
         if(percentUnderstood <= 100){
             if(button==="easy"){
-                percent = (percentUnderstood + (percentUnderstood * 25))
+                percent = (percentUnderstood += 25)
             }else if(button==="medium"){
-                percent = (percentUnderstood + (percentUnderstood * 15))
+                percent = (percentUnderstood += 15)
             }else if(button==="hard"){
-                percent = (percentUnderstood + (percentUnderstood * 3))
+                percent = (percentUnderstood += 3)
             }
         }
         setPercentUnderstood(percent)
+        console.log(percentUnderstood)
     }
 
     const getRandomCharacter = () =>{
@@ -58,14 +62,17 @@ export default function Flashcards(props){
             <div>
                 {answer ? villagerBirthday : villagerCard }
             </div>
-            <div id="difficulty-buttons">
+            <div id="difficulty-buttons" style={{display: answer ? "block" : "none"}}>
                 <div>
-                    <button id="easy-button" onClick={updatePercentUnderstood("easy")}>Easy</button>
-                    <button id="medium-button" onClick={updatePercentUnderstood("medium")}>Medium</button>
-                    <button id="hard-button" onClick={updatePercentUnderstood("hard")}>Hard</button>
+                    <button id="easy-button" onClick={()=> updatePercentUnderstood("easy")}>Easy</button>
+                    <button id="medium-button" onClick={()=> updatePercentUnderstood("medium")}>Medium</button>
+                    <button id="hard-button" onClick={()=> updatePercentUnderstood("hard")}>Hard</button>
                 </div>
                 <div>How hard is this question?</div>
             </div>
+            <button type="button" onClick={()=> router.push('/')}>
+                Home
+            </button>
         </div>
     )
 }

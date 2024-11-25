@@ -10,8 +10,8 @@ export default function villagerList(props){
 
     let [villagerInfo, setVillagerInfo] = useState(-1)
 
-    const villagerList = props.villagers.map((villager)=>
-        <li key={villager.id} className='villager-list' onClick={setVillagerInfo(villager.id)}>
+    let villagerList = props.villagers.map((villager)=>
+        <li key = {villager.id} className = 'villager-list' onClick={() =>setVillagerInfo(villager.id)}>
             <div id="villager-header">
                 <span id='villager-name'>{villager.name}</span>
                 <span id='percentage-learned'>{percentUnderstood}%</span>
@@ -19,12 +19,10 @@ export default function villagerList(props){
             <div>
                 <img src={villager.pic}/>
             </div>
-            <span style={{display: villagerInfo == villager.id ? "block" : "none"}}>
+            <span style = {{display: villagerInfo == villager.id ? "block" : "none"}}>
                 <div>
-                    <br></br>
-                    {villager.birthday}
-                    <br></br>
-                    {villager.relationshipStatus}
+                    <p>Birthday: {villager.birthday}</p>
+                    <p>Availability: {villager.relationshipStatus}</p>
                 </div>
             </span>
         </li>
