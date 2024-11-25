@@ -42,7 +42,7 @@ export default function Flashcards(props){
 
     const villagerBirthday = 
         <div className="flashcard" key={currentVillager.id}>
-            {currentVillager.name}'s birthday is: 
+            {currentVillager.name}&apos;s birthday is: 
             <br></br>
             {currentVillager.birthday}
         </div>
