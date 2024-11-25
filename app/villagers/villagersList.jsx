@@ -11,7 +11,7 @@ export default function villagerList(props){
     let [villagerInfo, setVillagerInfo] = useState(-1)
 
     let villagerList = props.villagers.map((villager)=>
-        <li key = {villager.id} className = 'villager-list' onClick={() =>setVillagerInfo(villager.id)}>
+        <li key = {villager.id} className = 'villager-list' onClick={()=> setVillagerInfo(villager.id)}>
             <div id="villager-header">
                 <span id='villager-name'>{villager.name}</span>
                 <span id='percentage-learned'>{percentUnderstood}%</span>
@@ -30,6 +30,14 @@ export default function villagerList(props){
 
     return(
         <div>
+            <nav className="nav-bar">
+                <button type='button' onClick={()=>router.push('/')}>Home</button>
+                <button type='button' onClick={()=>router.push('/villagers')}>Flashcards</button>
+                <button type='button' onClick={()=>router.push('/flashcards')}>Learn</button>
+            </nav>
+            <div>
+                <h1>Learn About All of the Villagers!</h1>
+            </div>
             <div>
                 <ul id='villager-list'>
                     {villagerList}

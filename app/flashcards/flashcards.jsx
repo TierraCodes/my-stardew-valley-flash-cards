@@ -59,6 +59,11 @@ export default function Flashcards(props){
 
     return(
         <div id='flashcards-page'>
+            <nav className="nav-bar">
+                <button type='button' onClick={()=>router.push('/')}>Home</button>
+                <button type='button' onClick={()=>router.push('/villagers')}>Flashcards</button>
+                <button type='button' onClick={()=>router.push('/flashcards')}>Learn</button>
+            </nav>
             <div>
                 {answer ? villagerBirthday : villagerCard }
             </div>
