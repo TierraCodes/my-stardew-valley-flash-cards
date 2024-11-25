@@ -3,24 +3,23 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
+
 export default function Flashcards(props){
     const router = useRouter()
 
-    let [percentUnderstood, setPercentUnderstood] = useState(1)
-
     const updatePercentUnderstood = (button) =>{
-        let percent = 1
-        if(percentUnderstood <= 100){
+        if(currentVillager.mastery <= 100){
             if(button==="easy"){
-                percent = (percentUnderstood += 25)
+                currentVillager.mastery += 25
             }else if(button==="medium"){
-                percent = (percentUnderstood += 15)
+                currentVillager.mastery += 15
             }else if(button==="hard"){
-                percent = (percentUnderstood += 3)
+                currentVillager.mastery += 3
             }
         }
-        setPercentUnderstood(percent)
-        console.log(percentUnderstood)
+        console.log(currentVillager.mastery)
+        props.updateVillager(currentVillager)
+        getRandomCharacter()
     }
 
     const getRandomCharacter = () =>{
@@ -42,8 +41,7 @@ export default function Flashcards(props){
     const [answer,setAnswer] = useState(false)
 
     const villagerBirthday = 
-        <div className="flashcard" key={currentVillager.id}
-            onClick={()=> getRandomCharacter()}>
+        <div className="flashcard" key={currentVillager.id}>
             {currentVillager.name}'s birthday is: 
             <br></br>
             {currentVillager.birthday}

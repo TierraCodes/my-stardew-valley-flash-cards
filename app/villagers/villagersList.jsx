@@ -6,15 +6,13 @@ import { useState } from 'react'
 export default function villagerList(props){
     const router = useRouter()
 
-    const percentUnderstood = 0
-
     let [villagerInfo, setVillagerInfo] = useState(-1)
 
     let villagerList = props.villagers.map((villager)=>
         <li key = {villager.id} className = 'villager-list' onClick={()=> setVillagerInfo(villager.id)}>
             <div id="villager-header">
                 <span id='villager-name'>{villager.name}</span>
-                <span id='percentage-learned'>{percentUnderstood}%</span>
+                <span id='percentage-learned'>{villager.mastery}%</span>
             </div>
             <div>
                 <img src={villager.pic}/>

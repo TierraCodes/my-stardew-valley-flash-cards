@@ -9,9 +9,19 @@ export default async function Flashcard(){
 
     return(
         <div>
-            <Flashcards villagers={villagers}></Flashcards>
+            <Flashcards villagers={villagers} updateVillager={updateVillager}></Flashcards>
         </div>
     )
     
+}
+
+async function updateVillager(villager) {
+    'use server'
+    const prisma = new PrismaClient()
+    await prisma.villager.update({
+        where: {id:villager.id},
+        data: {mastery:villager.mastery}
+    })
+    console.log(villager.mastery)
 }
 
