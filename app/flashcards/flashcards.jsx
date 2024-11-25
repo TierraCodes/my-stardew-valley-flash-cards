@@ -32,7 +32,7 @@ export default function Flashcards(props){
 
     useEffect(()=>{
         getRandomCharacter()
-    }, [])
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     const showAnswer = () =>{
         setAnswer(true)
