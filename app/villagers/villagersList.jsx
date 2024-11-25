@@ -15,7 +15,7 @@ export default function villagerList(props){
                 <span id='percentage-learned'>{villager.mastery}%</span>
             </div>
             <div>
-                <img src={villager.pic}/>
+                <Image src={villager.pic}/>
             </div>
             <span style = {{display: villagerInfo == villager.id ? "block" : "none"}}>
                 <div>
